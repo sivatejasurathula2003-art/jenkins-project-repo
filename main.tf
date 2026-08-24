@@ -1,18 +1,18 @@
 provider "aws" {
-region = "us-east-1"
+region = "ap-south-1"
 }
 
 resource "aws_instance" "one" {
-count = 4
-ami = "ami-04aa00acb1165b32a"
-instance_type = "t2.medium"
-key_name = "argocd"
-vpc_security_group_ids = ["sg-06785bc60f40dceda"]
+count = 3
+ami = "ami-01a00762f46d584a1"
+instance_type = "c7i-flex.large"
+key_name = "vpcserver"
+vpc_security_group_ids = ["sg-0fe5a9d3aa204663f"]
 tags = {
 Name = var.instance_names[count.index]
 }
 }
 
 variable "instance_names" {
-default = ["jenkins", "APPSERVER-1", "APPSERVER-2", "Monitoring server"]
+default = ["jenkins", "APPSERVER-1", "Monitoring server"]
 }
